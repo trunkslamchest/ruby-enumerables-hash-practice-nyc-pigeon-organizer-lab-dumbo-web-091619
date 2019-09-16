@@ -12,7 +12,6 @@ search = data.reduce([]) { |memo, old_hash|
 return search
 end
 
-# p get_names(pigeon_data)
 
 def get_categories(data)
 
@@ -27,7 +26,6 @@ search = data.reduce([]) { |memo, old_hash|
 return search
 end
 
-# p get_catergories(pigeon_data)
 
 def get_traits(data)
 
@@ -56,9 +54,6 @@ memo
 return search
 end
 
-# p get_names(pigeon_data)
-# p get_categories(pigeon_data)
-# p get_traits(pigeon_data)
 
 def nyc_pigeon_organizer(data)
 
