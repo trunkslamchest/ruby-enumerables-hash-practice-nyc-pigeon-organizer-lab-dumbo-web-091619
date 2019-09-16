@@ -74,7 +74,7 @@ color_type = traits[0]
 gender_type = traits[1]
 homes = traits[2]
 
-	final_hash = {}
+final_hash = {}
 
 	names.each_with_index { |name, index|
 		final_hash[name] = {color => color_type[index], gender => gender_type[index], lives => homes[index]}
