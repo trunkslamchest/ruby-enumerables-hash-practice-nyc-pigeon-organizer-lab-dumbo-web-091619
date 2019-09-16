@@ -31,26 +31,26 @@ end
 
 def get_traits(data)
 
-search = data.reduce([]) { |x, y|
+search = data.reduce([]) { |memo, old_hash|
 
+	traits_names = old_hash[1]
 	names = get_names(data)
 
-	compare = names.reduce([]) { |x2, y2|
+	compare = names.reduce([]) { |compared_memo, name|
+		organized_traits = []
 
-		arr1 = []
-
-			y[1].values.select { |e|
-				if e.include?(y2)
-					arr1 << y[1].key(e).to_s
+		traits_names.values.select { |trait_groups|
+			trait_types = traits_names.key(trait_groups).to_s
+				if trait_groups.include?(name)
+					organized_traits << trait_types
 				end
 			}
-
-		x2 << arr1
-		x2
+		compared_memo << organized_traits
+		compared_memo
 		}
 
-x << compare
-x
+memo << compare
+memo
 }
 
 return search
@@ -74,28 +74,11 @@ color_type = traits[0]
 gender_type = traits[1]
 homes = traits[2]
 
-# p names
-# puts
-# p color
-# p color_type
-# puts
-# p gender
-# p gender_type
-# puts
-# p lives
-# p homes
-# puts
-# puts "~~~~~~~~~~~"
-# puts
+	final_hash = {}
 
-h1 = {}
+	names.each_with_index { |name, index|
+		final_hash[name] = {color => color_type[index], gender => gender_type[index], lives => homes[index]}
+	}
 
-names.each_with_index { |e, i|
- h1[e] = {color => color_type[i], gender => gender_type[i], lives => homes[i]}
-
-#  p color_type[i]
-}
-
-
-return h1
+return final_hash
 end
